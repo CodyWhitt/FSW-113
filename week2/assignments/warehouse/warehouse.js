@@ -18,8 +18,7 @@ const parts = [
     { partNbr: 'V0SK0UX', partDescr: 'Lumpenmagler', aisle: 'H1', qty: 12},
     { partNbr: 'CTL40Z1', partDescr: 'Lumpenflempest', aisle: 'H1', qty: 24},
     { partNbr: 'POO9ZPM', partDescr: 'Eumonklippen', aisle: 'D2', qty: 7},
-    { partNbr: 'WEYPU3Z', partDescr: 'Mumpenflipper', aisle: 'E3', qty: 1}
-
+    { partNbr: 'WEYPU3Z', partDescr: 'Mumpenflipper', aisle: 'E3', qty: 1},
 ]
 
 // list of each part number and qty for check-off in the "detailsList" element
@@ -37,3 +36,52 @@ const parts = [
 // element that they will need to reserve a forklift, else remove the element
 
 // sum up the total number of parts and append that number to the text already in "totalItems" element
+
+detailsList = document.getElementById('detailsList')
+specialPackaging = document.getElementById('specialPackaging')
+hazardousMaterials = document.getElementById('hazardousMaterials')
+smallItemsOnly = document.getElementById('smallItemsOnly')
+forkliftNeeded = document.getElementById('forkiftNeeded')
+totalItems = document.getElementById('totalItems')
+
+for (i = 0; i < parts.length; i++) {
+    part = parts[i].partNbr + " |----| " + parts[i].qty
+    toString(part)
+    item = document.createElement('div')
+    item.innerHTML = part
+    detailsList.appendChild(item)
+    checkBox = document.createElement('input')
+    checkBox.setAttribute('type', 'checkbox')
+    item.appendChild(checkBox)
+    if (parts[i].aisle === 'B3'){
+        part = parts[i].partDescr
+        toString(part)
+        item = document.createElement('div')
+        item.innerHTML = part
+        specialPackaging.appendChild(item)
+    }
+    if (parts[i].aisle === 'J4'){
+        part = parts[i].partDescr
+        toString(part)
+        item = document.createElement('div')
+        item.innerHTML = part
+        hazardousMaterials.appendChild(item)
+    }
+    if (parts[i].aisle === 'H1'){
+        part = parts[i].partDescr
+        toString(part)
+        item = document.createElement('div')
+        item.innerHTML = part
+        smallItemsOnly.appendChild(item)
+    }
+    if ((parts[i].aisle === 'S')||(parts[i].aisle === 'T')||(parts[i].aisle === 'U')){
+        part = parts[i].partDescr
+        toString(part)
+        item = document.createElement('div')
+        item.innerHTML = part
+        forkliftNeeded.appendChild(item)
+    }
+}
+
+result = parts.reduce((accumulator, current) => accumulator += current.qty, 0);
+totalItems.insertAdjacentHTML('beforeend', ": " + result);
