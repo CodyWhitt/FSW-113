@@ -4,12 +4,16 @@
 
 // create an event listener that resets the scores and grades to their defaults when the Reset button is clicked
 
+curveIt = document.getElementById("submit")
+curveIt.addEventListener("click", curveGrades)
+output = document.getElementById("grades")
+
 function applyBell(grade, index, ary) {
     switch (true) {
         case grade >= (mean + (gradeSlice * 2)): 
             ary[index] = 'A'
             break
-        case grade >= (mean + gradeSlice): 
+        case grade >= (mean + gradeSlice):  
             ary[index] = 'B'
             break
         case grade >= (mean):
@@ -37,32 +41,26 @@ function convertArray(obj) {
 // separate lines of code into single lines. It currently has 18 lines of code. Without counting  
 // empty lines, can you get the number of lines down to 8?
 
-function curveGrades() {
-    **sum = function (accumulator, currentValue) {
-        return accumulator + currentValue
-    }
+ function curveGrades() {
+    let sum = (accumulator, currentValue) => accumulator + currentValue
 
-    **sumGrades = function(array) {
-        return array.reduce(sum)
-    }
+    let sumGrades = array => array.reduce(sum)
 
-    **aryGrades = convertArray(document.querySelector('#scores'))
+    let aryGrades = convertArray(document.querySelector('#scores'))
 
-    **minGrade = aryGrades.reduce(function(a, b) {
-        return Math.min(a, b)
-    })
+    let minGrade = aryGrades.reduce((a, b) => Math.min(a, b))
     
-    **maxGrade = aryGrades.reduce(function(a, b) {
-        return Math.max(a, b)
-    })
+    let maxGrade = aryGrades.reduce((a, b) => Math.max(a, b))
     
-    **mean = sumGrades(aryGrades) / aryGrades.length
+    mean = sumGrades(aryGrades) / aryGrades.length
 
-    **range = maxGrade - minGrade
+    let range = maxGrade - minGrade
 
     gradeSlice = range / 5
 
     aryGrades.forEach(applyBell)
+
+    output.innerHTML=aryGrades
 
     // write the value of aryGrades to the grades div in the HTML document
 }
