@@ -36,6 +36,12 @@
   font-size: small;
 }
 
+ol {
+  padding-left: 0px;
+  margin-top: 0px;
+  list-style: none;
+}
+
 .detailHeader {
   text-align: center;
   background-color: silver;
