@@ -7,20 +7,27 @@
 // modify this script to use the first day of the month the user selects in place of the const today 
 
 var months = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
-    monthSelect = document.getElementById('month')
-    for (i = 0; i < 12; i++){
+let monthSelect = document.getElementById('month')
+
+// x = document.createElement('option')
+// x.innerText = "Please Select A Month"
+// x.value = -1
+// monthSelect.appendChild(x)
+
+    for (i = 0; i < months.length; i++){
         x = document.createElement('option')
-        x.innerHTML = months[i]
+        x.innerText = months[i]
+        x.value = i+1
         monthSelect.appendChild(x)
     }
 
-yearSelect = document.getElementById('year').defaultValue=2022
+yearSelect = document.getElementById('year').defaultValue=new Date().getFullYear()
 
-function printCalendar() {
-    today = (monthSelect.selectedIndex + 1) + '/' + 1 +'/'+ yearSelect
+function printCalendar() {    
+    document.getElementById('calendarDays').innerHTML = ""
+    today = (monthSelect.value) + '/' + 1 +'/'+ yearSelect
     toString(today)
     today = new Date(today)
-    console.log(yearSelect)
     const month = today.getMonth()
     let days
     switch (month) {
@@ -63,3 +70,4 @@ function printCalendar() {
 
 go = document.getElementById('go')
 go.addEventListener('click', printCalendar)
+printCalendar()
