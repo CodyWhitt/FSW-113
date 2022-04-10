@@ -3,6 +3,8 @@
   border-radius: 8px;
   padding: 5px;
   width: 400px;
+  display:flex;
+  justify-content: space-evenly;
   /* 
   use the CSS grid to display all five <div> elements contained within
   the 'queryWrapper' <div> on a row next to each other 
@@ -15,6 +17,9 @@
   background-color: silver;
   padding: 5px;
   width: 400px;
+  display: grid;
+  grid-template-columns: auto auto;
+  text-transform: capitalize;
   /* 
   use the CSS grid to display the <div> elements contained within
   the 'dataWrapper' <div> in a 2 x 2 grid 
