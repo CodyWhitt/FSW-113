@@ -1,12 +1,16 @@
 // declare each of the variables marked with "**" in the appropriate scope and using the appropriate type
+let mean = 0
+let gradeSlice = 0
 
 // create an event listener that calls the curveGrade() function when the Curve It!! button is clicked
+document.getElementById("submit").addEventListener("click", curveGrades)     
 
 // create an event listener that resets the scores and grades to their defaults when the Reset button is clicked
-
-curveIt = document.getElementById("submit")
-curveIt.addEventListener("click", curveGrades)
-output = document.getElementById("grades")
+document.getElementById('reset').addEventListener('click', function reset() {
+    document.getElementById('scores').value=''
+    document.getElementById('grades').innerHTML='Curved Grades Show Here'
+})
+       
 
 function applyBell(grade, index, ary) {
     switch (true) {
@@ -42,25 +46,19 @@ function convertArray(obj) {
 // empty lines, can you get the number of lines down to 8?
 
  function curveGrades() {
-    let sum = (accumulator, currentValue) => accumulator + currentValue
-
-    let sumGrades = array => array.reduce(sum)
+    const sumGrades = array => array.reduce((accumulator, currentValue) => accumulator + currentValue)
 
     let aryGrades = convertArray(document.querySelector('#scores'))
-
-    let minGrade = aryGrades.reduce((a, b) => Math.min(a, b))
-    
-    let maxGrade = aryGrades.reduce((a, b) => Math.max(a, b))
     
     mean = sumGrades(aryGrades) / aryGrades.length
 
-    let range = maxGrade - minGrade
+    let range = aryGrades.reduce((a, b) => Math.max(a, b)) - aryGrades.reduce((a, b) => Math.min(a, b))
 
     gradeSlice = range / 5
 
     aryGrades.forEach(applyBell)
-
-    output.innerHTML=aryGrades
+    
+    document.getElementById('grades').innerHTML=aryGrades
 
     // write the value of aryGrades to the grades div in the HTML document
 }
