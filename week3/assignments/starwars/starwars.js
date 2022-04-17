@@ -1,18 +1,19 @@
 // declare any necessary variables
 
+//**You mentioned i didn't declare any variables up here in the grading assignment, but didn't deduct for it. 
+//Is everything thing done correctly in this part. the only thing i think i need to declare is my querytype and itemid **
+
 // define a function called 'fetchData()' that passes the values from 
 // the 'queryType' and 'itemID' elements in starwars.html to the function 
 // called 'getFromSWAPI()'
 
 function fetchData(){
-    queryType = document.getElementById("queryType")
-    queryType = queryType.value
-    itemID = document.getElementById("itemID")
-    itemID = itemID.value
-    getFromSWAPI()
+    queryType = document.getElementById("queryType").value
+    itemID = document.getElementById("itemID").value
+    getFromSWAPI(queryType, itemID)
 }
 
-function getFromSWAPI() {
+function getFromSWAPI(queryType, itemID) {
     // assign values to any necessary variables
     fetch(`https://swapi.dev/api/${queryType}/${itemID}`)
     .then(function (response) {
@@ -28,22 +29,13 @@ function getFromSWAPI() {
 
 const updateInfo = responseJSON => {
 
-    console.log(responseJSON)
-
     let keys = Object.keys(responseJSON)
 
-    console.log(keys)
-
-    dataLabel1 = document.getElementById("dataLabel1")
-    dataLabel1.innerHTML = (`${keys[0].replace('_', ' ')}`)
-    dataValue1 = document.getElementById("dataValue1")
-    dataValue1.innerHTML = (`${responseJSON[keys[0]]}`)
-    dataLabel1 = document.getElementById("dataLabel2")
-    dataLabel1.innerHTML = (`${keys[3].replace('_', ' ')}`)
-    dataValue1 = document.getElementById("dataValue2")
-    dataValue1.innerHTML = (`${responseJSON[keys[3]]}`)
+    document.getElementById("dataLabel1").innerHTML = `${keys[0].replace('_', ' ')}`
+    document.getElementById("dataValue1").innerHTML = `${responseJSON[keys[0]]}`
+    document.getElementById("dataLabel2").innerHTML = `${keys[3].replace('_', ' ')}`
+    document.getElementById("dataValue2").innerHTML = `${responseJSON[keys[3]]}`
 }
-
 // create a new function called 'updateInfo()' that receives the data from 
 // the call to that function (see above). Use logic to write the appropriate
 // labels to 'dataLabel1' and 'dataLabel2' elements in starwars.html, as well
