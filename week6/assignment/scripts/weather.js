@@ -1,9 +1,9 @@
 // import the convertTemp.js and getDaylight.js scripts with their default export
-import {getDaylight} from ".getDayight.js"
-import {convertTemp} from ".convertTemp.js"
+import {getDaylight} from "./getDayight.js"
+import {convertTemp} from "./convertTemp.js"
 
 // declare any variables needed
-goBttn = document.getElementById('goBttn')
+    goBttn = document.getElementById('goBttn')
 
 // (DONE) create an event listener for the click of the goBttn that calls a function to fetch the weather data
 goBttn.addEventListener('click', displayWeather)
