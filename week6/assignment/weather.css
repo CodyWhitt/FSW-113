@@ -5,9 +5,17 @@
   width: 300px;
   margin-top: 30px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: grid;
+  grid-template-areas: 
+  "header header"
+  "label data" 
+  "label data"
+  "label data"
+  "label data";
 }
 
 .header {
+  grid-area: header;
   font-size: large;
   text-align: center;
   font-weight: 700;
