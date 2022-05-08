@@ -35,7 +35,6 @@ function newStu(){
 }
 
 
-
 // Create a function that fills in the student's name, class name, and calculated grade on the certificate .
 function certFill(){
     certStudentName.innerHTML = certStudent.getStName()
