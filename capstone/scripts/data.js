@@ -13,9 +13,15 @@ async function getSystems() {
     // Note that although a number being passed as a parameter into a function may look like a numeral, it may be a string value 
     // instead, and may need to be converted to an integer. 
 
-    const response = await fetch("../data.json")
-    const data = await response.json()
-    // let matchingItems = 
+    let response = await fetch("../data.json")
+    let data = await response.json()
+    console.log(data)
+    const matchingItems = data.filter(function(items){
+        return items.parentID === 0
+    })
+    matchingItems.forEach(function(items){
+        console.log(items)
+    });
     console.log(data)
     // populateDD(matchingItems,domElm)
 }
